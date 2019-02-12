@@ -1,9 +1,9 @@
-# vim-hmr
+# vim-hrm
 
 > Vim syntax for Human Resource Machine by Tomorrow Corporation
 
 ```vim
-Plug 'CircuitCoder/vim-hmr'
+Plug 'CircuitCoder/vim-hrm'
 ```
 
 ## License
