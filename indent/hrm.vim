@@ -7,18 +7,27 @@ setlocal nolist
 setlocal autoindent
 setlocal indentexpr=GetHRMIndent(v:lnum)
 set indentkeys+=<:>
+set indentkeys+=<Space>
 
 function GetHRMIndent(lnum)
-  let LABEL = '[a-z]\+'
-  let COMMENT = '--.*$'
+  let curPos = getpos('.')
 
-  echo a:lnum
+  call cursor(a:lnum, 0)
+  normal! ^
+  let column = getpos('.')[2]
+  call setpos('.', curPos)
 
-  if getline(a:lnum) =~ LABEL
+  let synid = join(map(synstack(v:lnum, column), 'synIDattr(v:val,"name")'),' ')
+
+  if synid =~ '^HRMDefine'
     return 0
   endif
 
-  if getline(a:lnum) =~ COMMENT
+  if synid =~ '^HRMComment'
+    return 0
+  endif
+
+  if synid =~ '^HRMLabel'
     return 0
   endif
 
