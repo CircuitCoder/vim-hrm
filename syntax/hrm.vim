@@ -25,3 +25,4 @@ hi def link HRMJumpCommand PreProc
 hi def link HRMComment Comment
 hi def link HRMNumber Constant
 hi def link HRMAddr Identifier
+hi def link HRMLabel Label
